@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "oshop-8feb6": {
+      "hosting": {
+        "oshop": [
+          "oshop-8feb6"
+        ]
+      }
+    }
+  }
+}
