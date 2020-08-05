@@ -42,7 +42,7 @@ import {AuthGuardService} from './auth-guard.service';
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     RouterModule.forRoot([
-      
+
       {path: '', component: HomeComponent },
       {path: 'products', component: ProductsComponent },
       {path: 'shopping-cart', component: ShoppingCartComponent},
