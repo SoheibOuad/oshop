@@ -6,9 +6,12 @@ import {AngularFireDatabase} from '@angular/fire/database';
 })
 export class ProductService {
 
-  constructor(private db: AngularFireDatabase) { }
+  constructor(private db: AngularFireDatabase) {
+  }
 
-  create(product){
+  create(product) {
     return this.db.list('/products').push(product);
   }
+
 }
+
