@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {CategoryService} from '../../category.service';
 import {AngularFireDatabase} from '@angular/fire/database';
 import {ProductService} from '../../product.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-product-form',
@@ -11,7 +12,7 @@ import {ProductService} from '../../product.service';
 export class ProductFormComponent implements OnInit {
   categories;
   myPicturesRef;
-  constructor(private db: AngularFireDatabase , private productService: ProductService) {
+  constructor(private db: AngularFireDatabase , private productService: ProductService , private router: Router) {
     this.myPicturesRef = this.db.list('/categories', ref => ref
       .orderByChild('name'));
     this.myPicturesRef
@@ -25,7 +26,7 @@ export class ProductFormComponent implements OnInit {
   }
 
   save(product){
-    console.log(product.value)
     this.productService.create(product.value);
+    this.router.navigate(['/admin/products']);
   }
 }
