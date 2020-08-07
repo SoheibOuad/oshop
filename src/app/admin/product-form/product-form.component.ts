@@ -24,11 +24,17 @@ export class ProductFormComponent implements OnInit {
     });
 
     this.id = this.route.snapshot.paramMap.get('id');
-    if(this.id) this.productService.get(this.id).pipe(take(1)).subscribe(p =>
+    if(this.id) {
+      this.productService.get(this.id).pipe(take(1)).subscribe(p =>
       {
         this.product=p;
       });
-
+    }else {
+      this.product["title"]=""
+      this.product["price"]=0
+      this.product["category"]=""
+      this.product["imageUrl"]=""
+    }
 
   }
 
@@ -40,5 +46,14 @@ export class ProductFormComponent implements OnInit {
     else this.productService.create(product.value);
 
     this.router.navigate(['/admin/products']);
+  }
+
+  delete(){
+    if (confirm('Are you sure you want to delete this product ')){
+      this.productService.delete(this.id);
+      this.router.navigate(['/admin/products']);
+    }else {
+      return ;
+    }
   }
 }
