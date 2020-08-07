@@ -12,7 +12,7 @@ import { take } from 'rxjs/operators';
 export class ProductFormComponent implements OnInit {
   categories;
   myPicturesRef;
-  product={};
+  product:any = {};
   id;
   constructor(private db: AngularFireDatabase , private productService: ProductService , private router: Router,
     private route: ActivatedRoute ) {
@@ -29,16 +29,11 @@ export class ProductFormComponent implements OnInit {
       {
         this.product=p;
       });
-    }else {
-      this.product["title"]=""
-      this.product["price"]=0
-      this.product["category"]=""
-      this.product["imageUrl"]=""
     }
-
   }
 
   ngOnInit(): void {
+
   }
 
   save(product){

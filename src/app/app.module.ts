@@ -5,6 +5,8 @@ import {AngularFireDatabaseModule} from '@angular/fire/database';
 import {AngularFireAuthModule} from '@angular/fire/auth';
 import {RouterModule} from '@angular/router';
 import {FormsModule} from '@angular/forms';
+import { DataTableModule } from 'angular5-data-table';
+
 import { AppComponent } from './app.component';
 import {environment} from '../environments/environment';
 import { BsNavbarComponent } from './bs-navbar/bs-navbar.component';
@@ -49,6 +51,7 @@ import { CustomFormsModule } from 'ng2-validation'
     AngularFireAuthModule,
     FormsModule,
     CustomFormsModule,
+    DataTableModule.forRoot(),
     RouterModule.forRoot([
 
       {path: '', component: HomeComponent },
