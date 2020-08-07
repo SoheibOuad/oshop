@@ -13,6 +13,7 @@ export class ProductFormComponent implements OnInit {
   categories;
   myPicturesRef;
   product={};
+  id;
   constructor(private db: AngularFireDatabase , private productService: ProductService , private router: Router,
     private route: ActivatedRoute ) {
     this.myPicturesRef = this.db.list('/categories', ref => ref
@@ -22,8 +23,8 @@ export class ProductFormComponent implements OnInit {
       this.categories = res.map(change => ({key: change.payload.key, ...change.payload.val()}));
     });
 
-    let id = this.route.snapshot.paramMap.get('id');
-    if(id) this.productService.get(id).subscribe(p =>
+    this.id = this.route.snapshot.paramMap.get('id');
+    if(this.id) this.productService.get(this.id).pipe(take(1)).subscribe(p =>
       {
         this.product=p;
       });
@@ -35,7 +36,9 @@ export class ProductFormComponent implements OnInit {
   }
 
   save(product){
-    this.productService.create(product.value);
+    if (this.id) this.productService.update(this.id , product.value);
+    else this.productService.create(product.value);
+
     this.router.navigate(['/admin/products']);
   }
 }
