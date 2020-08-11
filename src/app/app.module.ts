@@ -28,6 +28,9 @@ import { ProductFormComponent } from './admin/product-form/product-form.componen
 import {CategoryService} from './category.service';
 import {ProductService} from './product.service';
 import { CustomFormsModule } from 'ng2-validation'
+import {ShoppingCartService} from './shopping-cart.service';
+import { ProductCardComponent } from './product-card/product-card.component';
+import { ProductQuantityComponent } from './product-quantity/product-quantity.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +45,9 @@ import { CustomFormsModule } from 'ng2-validation'
     AdminProductsComponent,
     AdminOrdersComponent,
     LoginComponent,
-    ProductFormComponent
+    ProductFormComponent,
+    ProductCardComponent,
+    ProductQuantityComponent
   ],
   imports: [
     BrowserModule,
@@ -76,7 +81,8 @@ import { CustomFormsModule } from 'ng2-validation'
     UserService,
     AdminAuthGuardService,
     CategoryService,
-    ProductService
+    ProductService,
+    ShoppingCartService
   ],
   bootstrap: [AppComponent]
 })
