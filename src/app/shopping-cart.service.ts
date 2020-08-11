@@ -47,7 +47,7 @@ export class ShoppingCartService {
     let item$ = this.getItem(cartId, product.key);
     item$.snapshotChanges().pipe(take(1)).subscribe((item : any) => {
       if (item.payload.exists())   item$.update({ quantity: item.payload.exportVal().quantity + 1 });
-      else item$.set({product, quantity: 1 });
+      else item$.set({title: product.title ,imageUrl: product.imageUrl , price: product.price , quantity: 1 });
     });
   }
 
@@ -55,9 +55,14 @@ export class ShoppingCartService {
     let cartId = await this.getOrcreateCartId();
     let item$ = this.getItem(cartId, product.key);
     item$.snapshotChanges().pipe(take(1)).subscribe((item : any) => {
-      if (item.payload.exportVal().quantity > 0)   item$.update({ quantity: item.payload.exportVal().quantity - 1 });
-      else item$.remove();
+      if (item.payload.exportVal().quantity === 1) item$.remove();
+      else item$.update({ quantity: item.payload.exportVal().quantity - 1 });
     });
+  }
+
+  async clearCart(){
+    let cartId = await this.getOrcreateCartId();
+    this.db.object('/shopping-cart/' + cartId + '/items/').remove();
   }
 
 }
