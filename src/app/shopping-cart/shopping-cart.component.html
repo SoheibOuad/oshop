@@ -39,7 +39,14 @@
       </tr>
     </tfoot>
   </table>
-  <button class="btn btn-danger btn-sm" (click)="clearCart()">
-    Clear Shopping Cart
-  </button>
+
+  <div class="row" *ngIf="cart.items.length">
+    <div class="col">
+      <a class="btn btn-primary" routerLink="/check-out" >Check Out</a>
+    </div>
+    <div class="col">
+      <button class="btn btn-light btn-sm" (click)="clearCart()">Clear Shopping Cart</button>
+    </div>
+  </div>
+
 </div>

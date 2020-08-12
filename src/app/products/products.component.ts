@@ -57,9 +57,4 @@ export class ProductsComponent implements OnInit , OnDestroy{
     this.subscription.unsubscribe()
   }
 
-
-  setCategory(category: string){
-    this.category=category;
-  }
-
 }
