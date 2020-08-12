@@ -20,4 +20,8 @@ export class OrderService {
     return this.db.list('/orders', ref => ref.orderByChild('userId').equalTo(userId));
   }
 
+  get(orderId){
+    return this.db.object('/orders/' + orderId).valueChanges();
+  }
+
 }

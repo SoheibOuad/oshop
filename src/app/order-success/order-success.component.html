@@ -1,1 +1,30 @@
-<p>order-success works!</p>
+<h1>Order Informations</h1>
+<div style="padding-top: 100px"></div>
+<div class="row">
+  <div class="col-6">
+    <div class="card" >
+      <div class="card-body">
+        <h5 class="card-title">Customer information</h5>
+        <p class="card-text">
+          Name : {{ order.shipping.name }}
+        </p>
+        <p class="card-text">
+          Address : {{ order.shipping.addressLine1 }} , {{ order.shipping.city }}
+        </p>
+        <p class="card-text">
+           Order's Date: {{ order.datePlaced | date }}
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="col-6">
+    <ul class="list-group">
+      <li *ngFor="let i of order.items" class="list-group-item">
+        {{ i.product.title }}
+        <div class="float-right">
+          {{ i.totalPrice | currency: 'USD': true }}
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>

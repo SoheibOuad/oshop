@@ -14,7 +14,7 @@ export class Orders {
           price: i.price
         },
         quantity: i.quantity,
-        totalPrice: i.price
+        totalPrice: i.totalPrice
       }
     })
   }
